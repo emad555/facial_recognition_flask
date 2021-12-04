@@ -6,8 +6,6 @@ from datetime import date
 
 import datetime
 
-# import serial
-# ser = serial.Serial('/dev/cu.usbmodem143101', 9600) # Establish the connection on a specific port
 
 
 csv = pd.read_csv('CSV/criminals.csv')
@@ -26,9 +24,6 @@ citizen_name = df.loc[:,'Name']
 citizen_name_list = citizen_name.values
 
 
-# ser = serial.Serial('COM3', 9600, timeout=0)
-
-# img_counter = 0
 
 face_cascade=cv2.CascadeClassifier("haarcascade_frontalface_alt2.xml")
 ds_factor=0.6
@@ -43,11 +38,6 @@ class VideoCamera(object):
     
     def get_frame(self,known_face_encodings,known_face_names):
         
-
-
-
-
-        # ser.write(str.encode('b'))
         # Grab a single frame of video
         ret, frame = self.video.read()
         #frame = cv2.resize(frame,(0,0),None,0.25,0.25)
@@ -93,7 +83,6 @@ class VideoCamera(object):
 
             f = open("text_log/file.txt", "a")
             if (name in citizen_name_list) and (name in criminal_name_list):
-                # ser.write(str.encode('a'))
                    
                   
                 
@@ -112,7 +101,6 @@ class VideoCamera(object):
 
                     f.writelines('\n')
 
-                    # ser.write(str.encode('c')) 
 
                     print(name, " Criminal + " , df.loc[df.Name == name, 'Reason'].values)
                     cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
@@ -128,27 +116,22 @@ class VideoCamera(object):
                 
                 
             if (name not in criminal_name_list) and (name != "Unknown"):
-                # ser.write(str.encode('b'))
                 print("Citizen ", name)
-                # ser.write(str.encode('b'))
-                # f = open("text_log/file.txt", "a")
+
                 f.write(name + " Citizen")
                 f.write(' ')
             
                 today = datetime.datetime.now()
                 today = str(today)
-                # print("Today date is: ", today)
             
                 f.write(today)
             
                 f.writelines('\n')
-                # f.close()
                 cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
             # Draw a label with a name below the face
                 cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 255, 0), cv2.FILLED)
                 font = cv2.FONT_HERSHEY_DUPLEX
                 cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (0, 0, 0), 1)
-                # ser.write(str.encode('c')) 
 
 
             elif(name == 'Unknown'):
@@ -166,7 +149,6 @@ class VideoCamera(object):
                 
 
  
-                # ser.write(str.encode('d'))  
                 print("unknown") 
                 cv2.rectangle(frame, (left, top), (right, bottom), (200, 0, 0), 2)
 
@@ -175,7 +157,6 @@ class VideoCamera(object):
                 font = cv2.FONT_HERSHEY_DUPLEX
                 cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-                # ser.write(str.encode('c'))  
             
             f.close()
 
