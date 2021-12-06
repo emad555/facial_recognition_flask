@@ -8,10 +8,10 @@ import datetime
 
 
 
-csv = pd.read_csv('CSV/criminals.csv')
+csv = pd.read_csv('database/criminals.csv')
 df = pd.DataFrame(csv)
 
-csv = pd.read_csv('CSV/citizen.csv')
+csv = pd.read_csv('database/citizen.csv')
 df_citizen = pd.DataFrame(csv)
 
 id_column = df.loc[:,'ID']

@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, Response
 from camera import VideoCamera
 import face_recognition
@@ -16,26 +15,26 @@ def index():
 
 def gen(camera):
         # Load a sample pictures and learn how to recognize it.
-    c1 = face_recognition.load_image_file("citizen_database/emad.jpeg")
-    c1_encoding = face_recognition.face_encodings(c1)[0]
+    citizen_1 = face_recognition.load_image_file("citizen_pics/emad.jpeg")
+    citizen_1_encoding = face_recognition.face_encodings(citizen_1)[0]
 
-    c2 = face_recognition.load_image_file("citizen_database/barack.jpeg")
-    c2_encoding = face_recognition.face_encodings(c2)[0]
+    citizen_2 = face_recognition.load_image_file("citizen_pics/barack.jpeg")
+    citizen_2_encoding = face_recognition.face_encodings(citizen_2)[0]
 
-    c3 = face_recognition.load_image_file("citizen_database/elon.jpeg")
-    c3_encoding = face_recognition.face_encodings(c3)[0]
+    citizen_3 = face_recognition.load_image_file("citizen_pics/elon.jpeg")
+    citizen_3_encoding = face_recognition.face_encodings(citizen_3)[0]
 
-    c4 = face_recognition.load_image_file("citizen_database/jeff.jpeg")
-    c4_encoding = face_recognition.face_encodings(c4)[0]
+    citizen_4 = face_recognition.load_image_file("citizen_pics/jeff.jpeg")
+    citizen_4_encoding = face_recognition.face_encodings(citizen_4)[0]
     
 
 
 
-    cr2 = face_recognition.load_image_file("criminal_database/elchapo.jpeg")
-    cr2_encoding = face_recognition.face_encodings(cr2)[0]
+    criminal_1 = face_recognition.load_image_file("criminal_pics/elchapo.jpeg")
+    criminal_1_encoding = face_recognition.face_encodings(criminal_1)[0]
 
-    cr3 = face_recognition.load_image_file("criminal_database/escobar.jpeg")
-    cr3_encoding = face_recognition.face_encodings(cr3)[0]
+    criminal_2 = face_recognition.load_image_file("criminal_pics/escobar.jpeg")
+    criminal_2_encoding = face_recognition.face_encodings(criminal_2)[0]
 
 
 
@@ -43,12 +42,12 @@ def gen(camera):
 
 
     known_face_encodings = [
-        c1_encoding,
-        c2_encoding,
-        c3_encoding,
-        c4_encoding,
-        cr2_encoding,
-        cr3_encoding
+        citizen_1_encoding,
+        citizen_2_encoding,
+        citizen_3_encoding,
+        citizen_4_encoding,
+        criminal_1_encoding,
+        criminal_2_encoding
     ]
 
     known_face_names = [
